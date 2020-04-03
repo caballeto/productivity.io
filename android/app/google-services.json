@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "317445888308",
+    "firebase_url": "https://productivity-io.firebaseio.com",
+    "project_id": "productivity-io",
+    "storage_bucket": "productivity-io.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317445888308:android:f73920774bbcfc3fc02d61",
+        "android_client_info": {
+          "package_name": "com.mokrousov.productivityio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317445888308-bslvqathmhfmm7keq49erc449jijvgo8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mokrousov.productivityio",
+            "certificate_hash": "1b81b35e756298d7cb6d5208467c32a0d3e68f79"
+          }
+        },
+        {
+          "client_id": "317445888308-k6qn76jm4u11qdlp86o06n42866icath.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNSZKcrLvAYoC9ZFODQJ_8mMxAnsa1Rlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317445888308-k6qn76jm4u11qdlp86o06n42866icath.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
