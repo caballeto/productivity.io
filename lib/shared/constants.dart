@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const kWrapperRoute = '/';
+const kAuthRoute = '/auth';
+const kNotesRoute = '/notes';
+const kNoteEditorRoute = '/note_editor';
+
 const textInputDecoration = InputDecoration(
   fillColor: Colors.white,
   filled: true,

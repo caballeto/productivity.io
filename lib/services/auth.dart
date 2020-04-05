@@ -31,7 +31,6 @@ class AuthService {
       final FirebaseUser user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
-      print('Firebase thrown error');
       print(e.toString());
       return null;
     }

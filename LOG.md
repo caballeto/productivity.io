@@ -14,10 +14,10 @@ Day 1
 
 **Next:**
 
-- create logout page
-- create register with email and password page (?), check other UX examples
-- add form validation
-- add loading spinner
+- [x] create logout page
+- [x] create register with email and password page (?), check other UX examples
+- [x] add form validation
+- [x] add loading spinner
 - create proper pages and page navigation from navigation drawer
 - create notes page (display default user notes list, view note, edit note,
   save note, delete note)
