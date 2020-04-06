@@ -5,9 +5,7 @@ import 'package:productivityio/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:productivityio/models/user.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override

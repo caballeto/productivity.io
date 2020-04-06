@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:productivityio/screens/authenticate/authenticate.dart';
 import 'package:productivityio/screens/editor/note_editor.dart';
 import 'package:productivityio/screens/home/notes.dart';
+import 'package:productivityio/screens/projects/projects.dart';
 import 'package:productivityio/screens/wrapper.dart';
 import 'package:productivityio/shared/constants.dart';
 
@@ -17,6 +18,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => Notes());
       case kNoteEditorRoute:
         return MaterialPageRoute(builder: (_) => NoteEditor());
+      case kProjectsRoute:
+        return MaterialPageRoute(builder: (_) => Projects());
       default:
         return MaterialPageRoute(builder: (_) => Wrapper());
     }

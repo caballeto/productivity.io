@@ -119,4 +119,4 @@ class _NoteEditorState extends State<NoteEditor> {
   }
 }
 
-const List<String> popupActions = const <String>['Delete'];
+const List<String> popupActions = const ['Delete'];

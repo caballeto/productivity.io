@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:productivityio/screens/home/notes.dart';
 import 'package:productivityio/services/auth.dart';
+import 'package:productivityio/shared/constants.dart';
 
 class NavDrawer extends StatefulWidget {
   @override
@@ -32,15 +33,18 @@ class _NavDrawerState extends State<NavDrawer> {
           ),
           ListTile(
             leading: Icon(Icons.calendar_today),
-            title: Text('Schedule'),
-            onTap: () => Navigator.of(context).pop(),
+            title: Text('Projects'),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(kProjectsRoute);
+            },
           ),
           ListTile(
             leading: Icon(Icons.border_color),
             title: Text('Notes'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.of(context).pushNamed('/notes');
+              Navigator.of(context).pushNamed(kNotesRoute);
             },
           ),
           ListTile(

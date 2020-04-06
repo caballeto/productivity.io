@@ -18,10 +18,10 @@ Day 1
 - [x] create register with email and password page (?), check other UX examples
 - [x] add form validation
 - [x] add loading spinner
-- create proper pages and page navigation from navigation drawer
-- create notes page (display default user notes list, view note, edit note,
+- [x] create proper pages and page navigation from navigation drawer
+- [x] create notes page (display default user notes list, view note, edit note,
   save note, delete note)
-- create firebase model to store user notes
+- [x] create firebase model to store user notes
 - add possibility to load images from camera into notes
 - add dynamic loading (upload images on the run when needed)
 
@@ -31,4 +31,18 @@ Day 1
 - allow scheduling working intervals
 - send notifications and detect yes/no working response
 - gather statistics of working periods and display it on dashboard
-  ideal side drawer (dashboard, calendar, notes, settings, logout)
+  ideal side drawer (dashboard, projects, notes, logout)
+
+Day 2
+
+- created ability to track time in intervals and save this data to firestore
+- created Projects, ProjectView pages
+- created Project data model
+
+**Next:**
+- create dashboard for project to visualize the progress
+- create overall dashboard of user stats (projects done, doing)
+- improve UI in general, make more fancy
+- [extra] add image, audio recordings to notes
+
+With this done, I think I am going to finish this project today.
