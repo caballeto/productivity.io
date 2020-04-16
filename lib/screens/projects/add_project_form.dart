@@ -37,7 +37,7 @@ class _AddProjectFormState extends State<AddProjectForm> {
             ),
             SizedBox(height: 10.0),
             RaisedButton(
-              color: Colors.accents[400],
+              color: Colors.blue,
               child: Text(
                 'Create',
                 style: TextStyle(color: Colors.white)

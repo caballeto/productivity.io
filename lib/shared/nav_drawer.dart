@@ -31,7 +31,7 @@ class _NavDrawerState extends State<NavDrawer> {
             title: Text('Dashboard'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(kDashboardRoute);
+              Navigator.of(context).pushReplacementNamed(kDashboardRoute);
             },
           ),
           ListTile(
@@ -39,7 +39,7 @@ class _NavDrawerState extends State<NavDrawer> {
             title: Text('Projects'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(kProjectsRoute);
+              Navigator.of(context).pushReplacementNamed(kProjectsRoute);
             },
           ),
           ListTile(
@@ -47,7 +47,7 @@ class _NavDrawerState extends State<NavDrawer> {
             title: Text('Notes'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(kNotesRoute);
+              Navigator.of(context).pushReplacementNamed(kNotesRoute);
             },
           ),
           ListTile(
