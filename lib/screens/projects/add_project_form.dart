@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:productivityio/models/project.dart';
 import 'package:productivityio/models/user.dart';
 import 'package:productivityio/services/database.dart';
@@ -36,9 +37,9 @@ class _AddProjectFormState extends State<AddProjectForm> {
             ),
             SizedBox(height: 10.0),
             RaisedButton(
-              color: Colors.purple[400],
+              color: Colors.accents[400],
               child: Text(
-                'Update',
+                'Create',
                 style: TextStyle(color: Colors.white)
               ),
               onPressed: () async {

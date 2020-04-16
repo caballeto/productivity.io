@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:productivityio/screens/home/notes.dart';
+import 'package:productivityio/screens/notes/notes.dart';
 
 class Home extends StatelessWidget {
   @override

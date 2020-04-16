@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:productivityio/screens/home/notes.dart';
+import 'package:productivityio/screens/notes/notes.dart';
 import 'package:productivityio/services/auth.dart';
 import 'package:productivityio/shared/constants.dart';
 
@@ -29,7 +29,10 @@ class _NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: Icon(Icons.insert_chart),
             title: Text('Dashboard'),
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(kDashboardRoute);
+            },
           ),
           ListTile(
             leading: Icon(Icons.calendar_today),

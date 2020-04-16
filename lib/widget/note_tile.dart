@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:productivityio/models/note.dart';
 import 'package:productivityio/screens/editor/note_editor.dart';
+import 'package:productivityio/shared/constants.dart';
+import 'package:productivityio/shared/utilities.dart';
 
 class NoteTile extends StatelessWidget {
+  static final formatter = DateFormat.yMMMMd('en_US');
+
   final Note note;
 
   NoteTile({ this.note });
@@ -22,17 +27,19 @@ class NoteTile extends StatelessWidget {
             fontSize: 16
           ),
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              border: Border.all(color: Color(0xFFDADCE0))
-            ),
+            decoration: boxDecoration,
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text(note.title ?? '', style: TextStyle(fontSize: 18)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(formatTitle(title: note.title), style: TextStyle(fontSize: 18)),
+                    Text(formatter.format(note.createdAt) ?? '')
+                  ],
+                ),
                 SizedBox(height: 14),
                 Flexible(
                   flex: 1,

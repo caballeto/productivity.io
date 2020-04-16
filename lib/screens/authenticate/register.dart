@@ -87,7 +87,7 @@ class _RegisterState extends State<Register> {
                   },
                 ),
                 SizedBox(height: 20.0),
-                Text('Or Sign In with',
+                Text('Or',
                     style: TextStyle(fontSize: 20)
                 ),
                 SizedBox(height: 20.0),
@@ -124,7 +124,7 @@ class _RegisterState extends State<Register> {
                 'Sign In with Google',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.grey
+                    color: Colors.black54
                 ),
               ),
             )

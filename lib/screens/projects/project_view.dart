@@ -1,12 +1,15 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:productivityio/models/project.dart';
 import 'package:productivityio/models/user.dart';
 import 'package:productivityio/models/work_interval.dart';
 import 'package:productivityio/services/database.dart';
+import 'package:productivityio/shared/constants.dart';
+import 'package:productivityio/shared/utilities.dart';
+import 'package:productivityio/widget/work_time_chart.dart';
 import 'package:provider/provider.dart';
 
 class ProjectView extends StatefulWidget {
@@ -19,7 +22,7 @@ class ProjectView extends StatefulWidget {
 }
 
 class _ProjectViewState extends State<ProjectView> {
-  static final formatter = DateFormat('yyyy-MM-dd');
+  static final formatter = DateFormat.yMMMMd('en_US');
 
   final Project project;
   final Stopwatch _timer_watch;
@@ -53,63 +56,96 @@ class _ProjectViewState extends State<ProjectView> {
           },
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Text(project.name, style: TextStyle(fontSize: 20)),
-              SizedBox(height: 14.0),
-              Text(formatter.format(project.createdAt),
-                  style: TextStyle(
-                    fontSize: 18,
-                  )
-              ),
-              SizedBox(height: 14.0),
-              Text('${_formatTimer(Duration(milliseconds: _elapsedTime))}'),
-              SizedBox(height: 14.0),
-              FlatButton.icon(
-                label: Text('Track', style: TextStyle(color: Colors.white)),
-                color: Colors.blue[400],
-                onPressed: () async {
-                  if (!_timer_watch.isRunning) {
-                    _start = DateTime.now().millisecondsSinceEpoch;
-                    _timer_watch.start();
-                    _timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
-                      setState(() {
-                        _elapsedTime = _timer_watch.elapsedMilliseconds;
-                      });
-                    });
-                  }
-                },
-                icon: IconTheme(
-                  data: IconThemeData(color: Colors.white),
-                  child: Icon(Icons.play_arrow),
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Container(
+              decoration: boxDecoration,
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    Text(project.name, style: TextStyle(fontSize: 22)),
+                    SizedBox(height: 14.0),
+                    Text("Created on ${formatter.format(project.createdAt)}",
+                        style: TextStyle(
+                          fontSize: 17,
+                        )
+                    ),
+                    SizedBox(height: 16.0),
+                    Text('${_formatTimer(Duration(milliseconds: _elapsedTime))}', style: TextStyle(fontSize: 16),),
+                    SizedBox(height: 16.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        FlatButton.icon(
+                          label: Text('Track', style: TextStyle(color: Colors.white)),
+                          color: Colors.blue[400],
+                          onPressed: () async {
+                            if (!_timer_watch.isRunning) {
+                              _start = DateTime.now().millisecondsSinceEpoch;
+                              _timer_watch.start();
+                              _timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
+                                setState(() {
+                                  _elapsedTime = _timer_watch.elapsedMilliseconds;
+                                });
+                              });
+                            }
+                          },
+                          icon: IconTheme(
+                            data: IconThemeData(color: Colors.white),
+                            child: Icon(Icons.play_arrow),
+                          ),
+                        ),
+                        FlatButton.icon(
+                          label: Text('Stop', style: TextStyle(color: Colors.white)),
+                          color: Colors.red[400],
+                          onPressed: () async {
+                            if (_timer_watch.isRunning) {
+                              _end = DateTime.now().millisecondsSinceEpoch;
+                              project.intervals.add(WorkInterval(start: _start, end: _end));
+                              project.workedTime += _timer_watch.elapsedMilliseconds;
+                              dbService.saveProjectToFirestore(project);
+                              _timer_watch.stop();
+                              _timer_watch.reset();
+                              _timer.cancel();
+                            }
+                          },
+                          icon: IconTheme(
+                            data: IconThemeData(color: Colors.white),
+                            child: Icon(Icons.stop),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 14.0),
-              FlatButton.icon(
-                label: Text('Stop', style: TextStyle(color: Colors.white)),
-                color: Colors.red[400],
-                onPressed: () async {
-                  if (_timer_watch.isRunning) {
-                    _end = DateTime.now().millisecondsSinceEpoch;
-                    project.intervals.add(WorkInterval(start: _start, end: _end));
-                    project.workedTime += _timer_watch.elapsedMilliseconds;
-                    dbService.saveProjectToFirestore(project);
-                    _timer_watch.stop();
-                    _timer_watch.reset();
-                    _timer.cancel();
-                  }
-                },
-                icon: IconTheme(
-                  data: IconThemeData(color: Colors.white),
-                  child: Icon(Icons.play_arrow),
-                ),
-              )
-            ],
+            ),
           ),
-        ),
+          Container(
+            padding: EdgeInsets.all(10.0),// summary and chart
+            child: Container(
+              decoration: boxDecoration,
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    Text('Stats', style: TextStyle(fontSize: 22)),
+                    SizedBox(height: 16.0),
+                    Text('${formatDuration(time: project.workedTime)}', style: TextStyle(fontSize: 16.0),),
+                    SizedBox(height: 16.0),
+                    SizedBox(
+                        height: 200.0,
+                        child: WorkTimeChart(project.intervals)
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

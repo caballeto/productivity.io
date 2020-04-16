@@ -21,7 +21,6 @@ class _NotesState extends State<Notes> {
       value: DatabaseService(uid: user.uid).notes,
       child: Scaffold(
         drawer: NavDrawer(),
-        backgroundColor: Colors.blueGrey[100],
         appBar: AppBar(
           backgroundColor: Colors.blue,
           elevation: 0.0,

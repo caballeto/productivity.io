@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
                   },
                 ),
                 SizedBox(height: 20.0),
-                Text('Or Sign In with',
+                Text('Or',
                   style: TextStyle(fontSize: 20)
                 ),
                 SizedBox(height: 20.0),
@@ -129,7 +129,7 @@ class _LoginState extends State<Login> {
                 'Sign In with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey
+                  color: Colors.black54
                 ),
               ),
             )

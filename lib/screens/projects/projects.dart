@@ -22,8 +22,7 @@ class _ProjectsState extends State<Projects> {
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
           child: AddProjectForm(),
         );
-      },
-      backgroundColor: Colors.blueGrey[100]);
+      });
     }
 
     final user = Provider.of<User>(context);
@@ -31,7 +30,6 @@ class _ProjectsState extends State<Projects> {
       value: DatabaseService(uid: user.uid).projects,
       child: Scaffold(
         drawer: NavDrawer(),
-        backgroundColor: Colors.blueGrey[100],
         appBar: AppBar(
           backgroundColor: Colors.blue,
           elevation: 0.0,

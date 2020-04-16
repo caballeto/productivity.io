@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:productivityio/models/work_interval.dart';
 
 class Project {
@@ -23,7 +25,6 @@ class Project {
   Map<String, dynamic> toJson() {
     final List<Map<String, dynamic>> intervals = [];
     this.intervals.forEach((e) => intervals.add({'start': e.start, 'end': e.end}));
-
     return {
       'name': name,
       'createdAt': (createdAt ?? DateTime.now()).millisecondsSinceEpoch,
@@ -45,7 +46,7 @@ Project toProject(DocumentSnapshot doc) {
     ? Project(
       id: doc.documentID,
       name: doc.data['name'],
-      createdAt: DateTime.fromMicrosecondsSinceEpoch(doc.data['createdAt'] ?? 0),
+      createdAt: DateTime.fromMillisecondsSinceEpoch(doc.data['createdAt'] ?? 0),
       workedTime: doc.data['workedTime'],
       intervals: intervals
     ) : null;

@@ -23,3 +23,33 @@ schedule such time intervals during the week, and provide possibility for writin
 ## Author
 
 Vladyslav Mokrousov
+
+## Screenshots
+
+### Login
+
+![Login](./screenshots/login.png)
+
+### Notes
+
+![Notes](./screenshots/notes..png)
+
+
+### Projects
+
+![Projects](./screenshots/projects.png)
+
+
+### Project
+
+![Project](./screenshots/project.png)
+
+
+### Drawer
+
+![Drawer](./screenshots/drawer.png)
+
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:productivityio/models/project.dart';
 import 'package:productivityio/screens/projects/project_view.dart';
+import 'package:productivityio/shared/utilities.dart';
 
 class ProjectTile extends StatelessWidget {
-  static final formatter = DateFormat('yyyy-MM-dd');
+  static final formatter = DateFormat.yMMMMd('en_US');
 
   final Project project;
 
@@ -35,12 +36,15 @@ class ProjectTile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                if (project.name.isNotEmpty)
-                  Text(project.name ?? '', style: TextStyle(fontSize: 19)),
-                SizedBox(height: (project.name.isEmpty ? 0 : 14)),
-                Text("Created at ${formatter.format(project.createdAt)}"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(formatTitle(title: project.name), style: TextStyle(fontSize: 19),),
+                    Text(formatter.format(project.createdAt) ?? '')
+                  ],
+                ),
                 SizedBox(height: 14),
-                Text("Worked for ${project.workedTime / (1000 * 60)} minutes")
+                Text("Worked for ${formatDuration(time: project.workedTime)}")
               ],
             ),
           ),
