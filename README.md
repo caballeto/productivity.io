@@ -28,28 +28,28 @@ Vladyslav Mokrousov
 
 ### Login
 
-![Login](./screenshots/login.png)
+![Login](./screenshots/login.jpg)
 
 ### Notes
 
-![Notes](./screenshots/notes..png)
+![Notes](./screenshots/notes..jpg)
 
 
 ### Projects
 
-![Projects](./screenshots/projects.png)
+![Projects](./screenshots/projects.jpg)
 
 
 ### Project
 
-![Project](./screenshots/project.png)
+![Project](./screenshots/project.jpg)
 
 
 ### Drawer
 
-![Drawer](./screenshots/drawer.png)
+![Drawer](./screenshots/drawer.jpg)
 
 
 ### Dashboard
 
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](./screenshots/dashboard.jpg)
