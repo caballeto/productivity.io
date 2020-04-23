@@ -31,27 +31,8 @@ class _NotesState extends State<Notes> {
           child: Icon(Icons.add),
           onPressed: () => Navigator.of(context).pushNamed(kNoteEditorRoute),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        extendBody: true,
-        bottomNavigationBar: _bottomActions(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat
       ),
     );
   }
-
-  Widget _bottomActions() => BottomAppBar(
-    shape: CircularNotchedRectangle(),
-    child: Container(
-      height: 56.0,
-      padding: EdgeInsets.symmetric(horizontal: 17.0),
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.mic, size: 26),
-          SizedBox(width: 30),
-          Icon(Icons.create, size: 26),
-          SizedBox(width: 30),
-          Icon(Icons.insert_photo)
-        ]
-      ),
-    ),
-  );
 }

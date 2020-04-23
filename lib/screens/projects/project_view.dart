@@ -76,48 +76,32 @@ class _ProjectViewState extends State<ProjectView> {
                     SizedBox(height: 16.0),
                     Text('${_formatTimer(Duration(milliseconds: _elapsedTime))}', style: TextStyle(fontSize: 16),),
                     SizedBox(height: 16.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        FlatButton.icon(
-                          label: Text('Track', style: TextStyle(color: Colors.white)),
-                          color: Colors.blue[400],
-                          onPressed: () async {
-                            if (!_timer_watch.isRunning) {
-                              _start = DateTime.now().millisecondsSinceEpoch;
-                              _timer_watch.start();
-                              _timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
-                                setState(() {
-                                  _elapsedTime = _timer_watch.elapsedMilliseconds;
-                                });
-                              });
-                            }
-                          },
-                          icon: IconTheme(
-                            data: IconThemeData(color: Colors.white),
-                            child: Icon(Icons.play_arrow),
-                          ),
-                        ),
-                        FlatButton.icon(
-                          label: Text('Stop', style: TextStyle(color: Colors.white)),
-                          color: Colors.red[400],
-                          onPressed: () async {
-                            if (_timer_watch.isRunning) {
-                              _end = DateTime.now().millisecondsSinceEpoch;
-                              project.intervals.add(WorkInterval(start: _start, end: _end));
-                              project.workedTime += _timer_watch.elapsedMilliseconds;
-                              dbService.saveProjectToFirestore(project);
-                              _timer_watch.stop();
-                              _timer_watch.reset();
-                              _timer.cancel();
-                            }
-                          },
-                          icon: IconTheme(
-                            data: IconThemeData(color: Colors.white),
-                            child: Icon(Icons.stop),
-                          ),
-                        )
-                      ],
+                    FlatButton.icon(
+                      label: Text(_timer_watch.isRunning ? 'Stop' : 'Track', style: TextStyle(color: Colors.white)),
+                      color: _timer_watch.isRunning ? Colors.red[400] : Colors.blue[400],
+                      onPressed: () async {
+                        if (_timer_watch.isRunning) {
+                          _end = DateTime.now().millisecondsSinceEpoch;
+                          project.intervals.add(WorkInterval(start: _start, end: _end));
+                          project.workedTime += _timer_watch.elapsedMilliseconds;
+                          dbService.saveProjectToFirestore(project);
+                          _timer_watch.stop();
+                          _timer_watch.reset();
+                          _timer.cancel();
+                        } else {
+                          _start = DateTime.now().millisecondsSinceEpoch;
+                          _timer_watch.start();
+                          _timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
+                            setState(() {
+                              _elapsedTime = _timer_watch.elapsedMilliseconds;
+                            });
+                          });
+                        }
+                      },
+                      icon: IconTheme(
+                        data: IconThemeData(color: Colors.white),
+                        child: Icon(_timer_watch.isRunning ? Icons.stop : Icons.play_arrow),
+                      ),
                     ),
                   ],
                 ),
