@@ -55,6 +55,24 @@ class _ProjectViewState extends State<ProjectView> {
             Navigator.of(context).pop();
           },
         ),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: (action) {
+              if (action == 'Delete') {
+                dbService.deleteProjectFromFirestore(project);
+                Navigator.of(context).pop();
+              } else {
+                debugPrint('Invalid menu-item action.');
+              }
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem<String>(
+                value: 'Delete',
+                child: Text('Delete'),
+              )
+            ],
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -88,6 +106,8 @@ class _ProjectViewState extends State<ProjectView> {
                           _timer_watch.stop();
                           _timer_watch.reset();
                           _timer.cancel();
+                          debugPrint(_timer_watch.isRunning.toString());
+                          setState(() {});
                         } else {
                           _start = DateTime.now().millisecondsSinceEpoch;
                           _timer_watch.start();

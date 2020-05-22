@@ -30,6 +30,12 @@ class DatabaseService {
         : collection.document(project.id).updateData(project.toJson());
   }
 
+  Future<void> deleteProjectFromFirestore(Project project) async {
+    final collection = projectsCollection(uid);
+    debugPrint('Deleting ${project.id} from firestore');
+    return collection.document(project.id).delete();
+  }
+
   Future<dynamic> saveNoteToFirestore(Note note) async {
     final collection = notesCollection(uid);
     debugPrint('Saving ${note.id} to firestore');

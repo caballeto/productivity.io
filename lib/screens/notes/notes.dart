@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productivityio/models/note.dart';
 import 'package:productivityio/models/user.dart';
-import 'package:productivityio/screens/editor/note_editor.dart';
 import 'package:productivityio/shared/constants.dart';
 import 'package:productivityio/widget/notes_list.dart';
 import 'package:productivityio/services/database.dart';
