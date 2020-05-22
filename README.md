@@ -4,7 +4,7 @@ Productivity.io is a time tracker and todo app with a sole goal of increasing yo
 It has long been known that the best productivity could be reached when you are working on
 some problem in a big chunk of uninterrupted time, usually 3-5 hours. Therefore in order to increase
 productivity you have to increase the number of such working chunks. The app will allow you to
-schedule such time intervals during the week, and provide possibility for writing actionalbe notes/todo lists.
+track time intervals during the week, and provide possibility for writing actionable notes/todo lists.
 
 ## Features
 
